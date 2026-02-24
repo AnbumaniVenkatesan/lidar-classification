@@ -1,0 +1,90 @@
+
+
+FILE: DX3042075 CASTELPOGGIO000001_PRED.laz
+Class 1 : 6.984
+Class 2 : 10.555
+Class 3 : 7.347
+Class 6 : 4.551
+Overall Accuracy : 7.359
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000002_PRED.laz
+Class 1 : 4.507
+Class 2 : 5.291
+Class 3 : 4.316
+Class 6 : 3.458
+Overall Accuracy : 4.393
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000003_PRED.laz
+Class 1 : 4.758
+Class 2 : 6.524
+Class 3 : 5.007
+Class 6 : 3.945
+Overall Accuracy : 5.059
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000004_PRED.laz
+Class 1 : 3.242
+Class 2 : 5.332
+Class 3 : 5.043
+Class 6 : 3.055
+Overall Accuracy : 4.168
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000005_PRED.laz
+Class 1 : 3.024
+Class 2 : 2.826
+Class 3 : 4.338
+Class 6 : 3.154
+Overall Accuracy : 3.336
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000006_PRED.laz
+Class 1 : 4.099
+Class 2 : 6.254
+Class 3 : 4.959
+Class 6 : 3.085
+Overall Accuracy : 4.599
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000007_PRED.laz
+Class 1 : 3.963
+Class 2 : 4.276
+Class 3 : 5.046
+Class 6 : 2.569
+Overall Accuracy : 3.963
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000008_PRED.laz
+Class 1 : 3.496
+Class 2 : 5.484
+Class 3 : 4.569
+Class 6 : 2.659
+Overall Accuracy : 4.052
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000009_PRED.laz
+Class 1 : 4.346
+Class 2 : 4.849
+Class 3 : 5.321
+Class 6 : 2.679
+Overall Accuracy : 4.299
+------------------------------------------------------------
+
+
+FILE: DX3042075 CASTELPOGGIO000010_PRED.laz
+Class 1 : 6.042
+Class 2 : 8.877
+Class 3 : 6.253
+Class 6 : 4.944
+Overall Accuracy : 6.529
+------------------------------------------------------------
