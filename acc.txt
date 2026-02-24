@@ -1,0 +1,453 @@
+laspy ready
+  ✅ lazrs ready
+  ✅ numpy ready
+  ✅ torch ready
+  ✅ scikit-learn ready
+  ✅ tqdm ready
+  ✅ matplotlib ready
+
+✅ All packages ready!
+
+=================================================================
+   LIDAR CLASSIFICATION
+   Train on 10 classified files → Predict raw file
+=================================================================
+
+  Device     : CUDA
+  ✅ GPU     : NVIDIA GeForce RTX 3050
+  ✅ GPU Mem : 6.0 GB
+  CPU Cores  : 12
+  Epochs     : 80
+  Batch size : 16384
+=================================================================
+
+🚀 Starting LiDAR Classification Pipeline...
+=================================================================
+  Step 1 → Load 10 classified files (training data)
+  Step 2 → Train RandLA-Net on real labels
+  Step 3 → Predict raw unclassified file
+  Step 4 → Post processing
+  Step 5 → Save .laz output
+=================================================================
+
+=================================================================
+  STEP 1: LOADING 10 CLASSIFIED TRAINING FILES
+=================================================================
+
+  File  1/10: pt013390.laz
+  Points: 24,288,891
+  Classes: [ 1  2  3  4  5  6  7 18 69]
+  Extracting features...
+                                                               
+  ✅ 24,288,891 labeled points added
+
+-----------------------------------------------------------------
+  Combining all training data...
+
+  ✅ Total training points : 24,288,891
+  ✅ Feature matrix        : (24288891, 13)
+
+  Training class distribution:
+  --------------------------------------------------
+    Class  1 (Unassigned        ):  225,371 pts (0.9%) 
+    Class  2 (Ground            ): 8,508,674 pts (35.0%) █████████████████
+    Class  3 (Low Vegetation    ): 1,416,898 pts (5.8%) ██
+    Class  4 (Med Vegetation    ): 3,346,674 pts (13.8%) ██████
+    Class  5 (High Vegetation   ): 7,057,371 pts (29.1%) ██████████████
+    Class  6 (Building          ): 3,717,770 pts (15.3%) ███████
+    Class  7 (Noise             ):    4,477 pts (0.0%) 
+    Class 18 (Class 18          ):    8,188 pts (0.0%) 
+    Class 69 (Class 69          ):    3,468 pts (0.0%) 
+  --------------------------------------------------
+
+  ⏱️  Step 1 time: 2.2 mins
+
+=================================================================
+  STEP 2: TRAINING RandLA-Net ON YOUR CLASSIFIED DATA
+=================================================================
+  Classes     : [np.int32(1), np.int32(2), np.int32(3), np.int32(4), np.int32(5), np.int32(6), np.int32(7), np.int32(18), np.int32(69)]
+  Num classes : 9
+  Device      : CUDA
+  Train points: 21,860,001
+  Val points  : 2,428,890
+  Model params: 2,637,577
+  ✅ Mixed Precision enabled → 2x faster!
+
+  Training 80 epochs...
+  ------------------------------------------------------------
+  Epoch [  5/80] Loss: 0.1330 | Train: 94.91% | Val: 91.25% | Best Val: 93.04% | GPU: 1.6GB
+  Epoch [ 10/80] Loss: 0.1128 | Train: 95.70% | Val: 95.02% | Best Val: 95.02% | GPU: 1.6GB
+  Epoch [ 15/80] Loss: 0.1023 | Train: 96.08% | Val: 93.90% | Best Val: 95.02% | GPU: 1.6GB
+  Epoch [ 20/80] Loss: 0.0950 | Train: 96.35% | Val: 94.85% | Best Val: 95.53% | GPU: 1.6GB
+  Epoch [ 25/80] Loss: 0.0897 | Train: 96.54% | Val: 95.24% | Best Val: 95.81% | GPU: 1.6GB
+  Epoch [ 30/80] Loss: 0.0856 | Train: 96.70% | Val: 95.96% | Best Val: 96.29% | GPU: 1.6GB
+  Epoch [ 35/80] Loss: 0.0818 | Train: 96.85% | Val: 96.09% | Best Val: 96.29% | GPU: 1.6GB
+  Epoch [ 40/80] Loss: 0.0785 | Train: 96.97% | Val: 96.48% | Best Val: 96.48% | GPU: 1.6GB
+  Epoch [ 45/80] Loss: 0.0753 | Train: 97.10% | Val: 96.70% | Best Val: 96.82% | GPU: 1.6GB
+  Epoch [ 50/80] Loss: 0.0722 | Train: 97.22% | Val: 96.46% | Best Val: 96.82% | GPU: 1.6GB
+  Epoch [ 55/80] Loss: 0.0693 | Train: 97.33% | Val: 96.99% | Best Val: 97.17% | GPU: 1.6GB
+  Epoch [ 60/80] Loss: 0.0668 | Train: 97.44% | Val: 97.30% | Best Val: 97.33% | GPU: 1.6GB
+  Epoch [ 65/80] Loss: 0.0643 | Train: 97.53% | Val: 97.39% | Best Val: 97.40% | GPU: 1.6GB
+  Epoch [ 70/80] Loss: 0.0626 | Train: 97.60% | Val: 97.54% | Best Val: 97.54% | GPU: 1.6GB
+  Epoch [ 75/80] Loss: 0.0613 | Train: 97.66% | Val: 97.48% | Best Val: 97.56% | GPU: 1.6GB
+  Epoch [ 80/80] Loss: 0.0608 | Train: 97.68% | Val: 97.55% | Best Val: 97.60% | GPU: 1.6GB
+
+  ✅ Training complete!
+  ✅ Best validation accuracy: 97.60%
+  ✅ Model saved: D:\lidarrrrr\anbu\output.pth
+---------------------------------------------------------------------------
+
+
+
+
+
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+(base) C:\Users\Elegance geo tech>cd d:\lidarrrrr\anbu
+
+(base) C:\Users\Elegance geo tech>python your_cv_file_name.py
+Total files found: 10
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000001.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000002.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000003.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000004.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000005.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000006.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000007.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000008.laz
+ - d:\lidarrrrr\anbu\training_labeled\DX3011148 ULMIANO000009.laz
+ - d:\lidarrrrr\anbu\training_labeled\pt013390.laz
+
+Device: CUDA
+Classes: [2, 3, 4, 5, 6]
+Folds: 10
+Outputs: d:\lidarrrrr\anbu\cv_outputs
+======================================================================
+
+FOLD 1/10
+Test : DX3011148 ULMIANO000001.laz
+Train: 9 files
+Train epoch 1/10: 100%|█████████████████████████████████| 200/200 [00:27<00:00,  7.27it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train epoch 2/10: 100%|█████████████████████████████████| 200/200 [00:21<00:00,  9.26it/s, loss=nan]
+Train epoch 3/10: 100%|█████████████████████████████████| 200/200 [00:17<00:00, 11.47it/s, loss=nan]
+Train epoch 4/10: 100%|█████████████████████████████████| 200/200 [00:16<00:00, 12.00it/s, loss=nan]
+Train epoch 5/10: 100%|█████████████████████████████████| 200/200 [00:16<00:00, 12.21it/s, loss=nan]
+Train epoch 6/10: 100%|█████████████████████████████████| 200/200 [00:16<00:00, 12.11it/s, loss=nan]
+Train epoch 7/10: 100%|█████████████████████████████████| 200/200 [00:17<00:00, 11.62it/s, loss=nan]
+Train epoch 8/10: 100%|█████████████████████████████████| 200/200 [00:15<00:00, 12.81it/s, loss=nan]
+Train epoch 9/10: 100%|█████████████████████████████████| 200/200 [00:15<00:00, 13.07it/s, loss=nan]
+Train epoch 10/10: 100%|████████████████████████████████| 200/200 [00:16<00:00, 12.35it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 23/23 [00:40<00:00,  1.78s/it]
+Fold Accuracy: 76.85%
+
+FOLD 2/10
+Test : DX3011148 ULMIANO000002.laz
+Train: 9 files
+Train epoch 1/10: 100%|█████████████████████████████████| 200/200 [00:23<00:00,  8.66it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train epoch 2/10: 100%|█████████████████████████████████| 200/200 [00:12<00:00, 16.37it/s, loss=nan]
+Train epoch 3/10: 100%|█████████████████████████████████| 200/200 [00:12<00:00, 15.40it/s, loss=nan]
+Train epoch 4/10: 100%|█████████████████████████████████| 200/200 [00:14<00:00, 13.99it/s, loss=nan]
+Train epoch 5/10: 100%|█████████████████████████████████| 200/200 [00:13<00:00, 15.22it/s, loss=nan]
+Train epoch 6/10: 100%|█████████████████████████████████| 200/200 [00:10<00:00, 18.61it/s, loss=nan]
+Train epoch 7/10: 100%|█████████████████████████████████| 200/200 [00:13<00:00, 15.19it/s, loss=nan]
+Train epoch 8/10: 100%|█████████████████████████████████| 200/200 [00:12<00:00, 16.16it/s, loss=nan]
+Train epoch 9/10: 100%|█████████████████████████████████| 200/200 [00:12<00:00, 15.39it/s, loss=nan]
+Train epoch 10/10: 100%|████████████████████████████████| 200/200 [00:11<00:00, 16.82it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 24/24 [00:33<00:00,  1.40s/it]
+Fold Accuracy: 71.65%
+
+FOLD 3/10
+Test : DX3011148 ULMIANO000003.laz
+Train: 9 files
+Train epoch 1/10: 100%|█████████████████████████████████| 200/200 [00:17<00:00, 11.12it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train epoch 2/10: 100%|█████████████████████████████████| 200/200 [00:10<00:00, 18.82it/s, loss=nan]
+Train epoch 3/10: 100%|█████████████████████████████████| 200/200 [00:10<00:00, 18.93it/s, loss=nan]
+Train epoch 4/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 17.06it/s, loss=nan]
+Train epoch 5/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 16.95it/s, loss=nan]
+Train epoch 6/10: 100%|█████████████████████████████████| 200/200 [00:10<00:00, 18.66it/s, loss=nan]
+Train epoch 7/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 17.55it/s, loss=nan]
+Train epoch 8/10: 100%|█████████████████████████████████| 200/200 [00:10<00:00, 18.62it/s, loss=nan]
+Train epoch 9/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 17.07it/s, loss=nan]
+Train epoch 10/10: 100%|████████████████████████████████| 200/200 [00:09<00:00, 20.12it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 85/85 [02:32<00:00,  1.79s/it]
+Fold Accuracy: 66.91%
+
+FOLD 4/10
+Test : DX3011148 ULMIANO000004.laz
+Train: 9 files
+Train epoch 1/10: 100%|█████████████████████████████████| 200/200 [00:24<00:00,  8.22it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train epoch 2/10: 100%|█████████████████████████████████| 200/200 [00:14<00:00, 14.04it/s, loss=nan]
+Train epoch 3/10: 100%|█████████████████████████████████| 200/200 [00:15<00:00, 12.59it/s, loss=nan]
+Train epoch 4/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 16.83it/s, loss=nan]
+Train epoch 5/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 16.76it/s, loss=nan]
+Train epoch 6/10: 100%|█████████████████████████████████| 200/200 [00:14<00:00, 13.93it/s, loss=nan]
+Train epoch 7/10: 100%|█████████████████████████████████| 200/200 [00:13<00:00, 14.74it/s, loss=nan]
+Train epoch 8/10: 100%|█████████████████████████████████| 200/200 [00:13<00:00, 14.35it/s, loss=nan]
+Train epoch 9/10: 100%|█████████████████████████████████| 200/200 [00:12<00:00, 15.73it/s, loss=nan]
+Train epoch 10/10: 100%|████████████████████████████████| 200/200 [00:12<00:00, 16.24it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 16/16 [00:29<00:00,  1.86s/it]
+Fold Accuracy: 79.88%
+
+FOLD 5/10
+Test : DX3011148 ULMIANO000005.laz
+Train: 9 files
+Train epoch 1/10: 100%|█████████████████████████████████| 200/200 [00:14<00:00, 13.84it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train epoch 2/10: 100%|█████████████████████████████████| 200/200 [00:10<00:00, 18.37it/s, loss=nan]
+Train epoch 3/10: 100%|█████████████████████████████████| 200/200 [00:09<00:00, 20.24it/s, loss=nan]
+Train epoch 4/10: 100%|█████████████████████████████████| 200/200 [00:09<00:00, 21.13it/s, loss=nan]
+Train epoch 5/10: 100%|█████████████████████████████████| 200/200 [00:09<00:00, 21.68it/s, loss=nan]
+Train epoch 6/10: 100%|█████████████████████████████████| 200/200 [00:09<00:00, 20.82it/s, loss=nan]
+Train epoch 7/10: 100%|█████████████████████████████████| 200/200 [00:09<00:00, 21.11it/s, loss=nan]
+Train epoch 8/10: 100%|█████████████████████████████████| 200/200 [00:10<00:00, 19.38it/s, loss=nan]
+Train epoch 9/10: 100%|█████████████████████████████████| 200/200 [00:09<00:00, 21.37it/s, loss=nan]
+Train epoch 10/10: 100%|████████████████████████████████| 200/200 [00:09<00:00, 21.90it/s, loss=nan]
+Predict tiles: 100%|██████████████████████████████████████████████| 149/149 [04:44<00:00,  1.91s/it]
+Fold Accuracy: 70.88%
+
+FOLD 6/10
+Test : DX3011148 ULMIANO000006.laz
+Train: 9 files
+Train epoch 1/10: 100%|█████████████████████████████████| 200/200 [00:18<00:00, 10.63it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train epoch 2/10: 100%|█████████████████████████████████| 200/200 [00:13<00:00, 15.22it/s, loss=nan]
+Train epoch 3/10: 100%|█████████████████████████████████| 200/200 [00:13<00:00, 15.18it/s, loss=nan]
+Train epoch 4/10: 100%|█████████████████████████████████| 200/200 [00:14<00:00, 13.83it/s, loss=nan]
+Train epoch 5/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 17.71it/s, loss=nan]
+Train epoch 6/10: 100%|█████████████████████████████████| 200/200 [00:11<00:00, 17.51it/s, loss=nan]
+Train epoch 7/10: 100%|█████████████████████████████████| 200/200 [00:13<00:00, 14.34it/s, loss=nan]
+Train epoch 8/10: 100%|█████████████████████████████████| 200/200 [00:12<00:00, 15.54it/s, loss=nan]
+Train epoch 9/10: 100%|█████████████████████████████████| 200/200 [00:12<00:00, 15.51it/s, loss=nan]
+Train epoch 10/10: 100%|████████████████████████████████| 200/200 [00:11<00:00, 17.67it/s, loss=nan]
+Predict tiles:  32%|███████████████▏                                | 31/98 [00:25<00:55,  1.21it/s]
+Traceback (most recent call last):
+  File "C:\Users\Elegance geo tech\your_cv_file_name.py", line 494, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Elegance geo tech\your_cv_file_name.py", line 466, in main
+    pred_cls = predict_and_save(model, test_path, out_pred_path, CONFIG)
+  File "C:\Users\Elegance geo tech\your_cv_file_name.py", line 393, in predict_and_save
+    knn = tree.query(ptsn, k=cfg["k"], return_distance=False).astype(np.int64)
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "sklearn/neighbors/_binary_tree.pxi", line 1180, in sklearn.neighbors._kd_tree.BinaryTree64.query
+ValueError: k must be less than or equal to the number of training points
+
+(base) C:\Users\Elegance geo tech>
+
+
+
+
+(base) C:\Users\Elegance geo tech>python randlanet_loocv_perclass.py
+Total files found: 2
+ - D:\lidarrrrr\anbu\training_labeled\a\DX3011148 ULMIANO000001.laz
+ - D:\lidarrrrr\anbu\training_labeled\a\DX3011148 ULMIANO000002.laz
+
+Device: CUDA
+Classes: [2, 3, 4, 5, 6]
+Folds: 2
+Outputs: d:\lidarrrrr\anbu\cv_outputs
+======================================================================
+
+FOLD 1/2
+Test : DX3011148 ULMIANO000001.laz
+Train: 1 files
+Train 1/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.76it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train 2/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 24.68it/s, loss=nan]
+Train 3/10: 100%|███████████████████████████████████████| 200/200 [00:07<00:00, 26.24it/s, loss=nan]
+Train 4/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 24.87it/s, loss=nan]
+Train 5/10: 100%|███████████████████████████████████████| 200/200 [00:07<00:00, 25.81it/s, loss=nan]
+Train 6/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 24.23it/s, loss=nan]
+Train 7/10: 100%|███████████████████████████████████████| 200/200 [00:07<00:00, 26.11it/s, loss=nan]
+Train 8/10: 100%|███████████████████████████████████████| 200/200 [00:07<00:00, 25.04it/s, loss=nan]
+Train 9/10: 100%|███████████████████████████████████████| 200/200 [00:07<00:00, 26.04it/s, loss=nan]
+Train 10/10: 100%|██████████████████████████████████████| 200/200 [00:08<00:00, 24.68it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 23/23 [00:40<00:00,  1.78s/it]
+
+Fold Overall Accuracy: 76.85%
+Per-class Accuracy (Recall):
+  Ground(2)   : 100.00%
+  LowVeg(3)   : 0.00%
+  MedVeg(4)   : 0.00%
+  HighVeg(5)  : 0.00%
+  Building(6) : 0.00%
+
+Precision / Recall / F1:
+              precision    recall  f1-score   support
+
+   Ground(2)     0.7685    1.0000    0.8691   2576445
+   LowVeg(3)     0.0000    0.0000    0.0000    111302
+   MedVeg(4)     0.0000    0.0000    0.0000    649485
+  HighVeg(5)     0.0000    0.0000    0.0000     10178
+ Building(6)     0.0000    0.0000    0.0000      5172
+
+    accuracy                         0.7685   3352582
+   macro avg     0.1537    0.2000    0.1738   3352582
+weighted avg     0.5906    0.7685    0.6679   3352582
+
+
+FOLD 2/2
+Test : DX3011148 ULMIANO000002.laz
+Train: 1 files
+Train 1/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 24.23it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train 2/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 22.24it/s, loss=nan]
+Train 3/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.98it/s, loss=nan]
+Train 4/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 23.41it/s, loss=nan]
+Train 5/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 20.58it/s, loss=nan]
+Train 6/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 23.44it/s, loss=nan]
+Train 7/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 22.56it/s, loss=nan]
+Train 8/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.73it/s, loss=nan]
+Train 9/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 22.36it/s, loss=nan]
+Train 10/10: 100%|██████████████████████████████████████| 200/200 [00:08<00:00, 23.54it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 24/24 [00:36<00:00,  1.54s/it]
+
+Fold Overall Accuracy: 71.65%
+Per-class Accuracy (Recall):
+  Ground(2)   : 100.00%
+  LowVeg(3)   : 0.00%
+  MedVeg(4)   : 0.00%
+  HighVeg(5)  : 0.00%
+  Building(6) : 0.00%
+
+Precision / Recall / F1:
+              precision    recall  f1-score   support
+
+   Ground(2)     0.7165    1.0000    0.8349   1712932
+   LowVeg(3)     0.0000    0.0000    0.0000    214369
+   MedVeg(4)     0.0000    0.0000    0.0000    158764
+  HighVeg(5)     0.0000    0.0000    0.0000    304563
+ Building(6)     0.0000    0.0000    0.0000         0
+
+    accuracy                         0.7165   2390628
+   macro avg     0.1433    0.2000    0.1670   2390628
+weighted avg     0.5134    0.7165    0.5982   2390628
+
+
+======================================================================
+✅ OVERALL RESULTS (All folds combined)
+Mean Overall Accuracy: 74.25%  (std 2.60%)
+Overall Per-class Accuracy (Recall):
+  Ground(2)   : 100.00%
+  LowVeg(3)   : 0.00%
+  MedVeg(4)   : 0.00%
+  HighVeg(5)  : 0.00%
+  Building(6) : 0.00%
+Vegetation (3+4+5) Combined Recall: 0.00%
+======================================================================
+
+
+
+Total files found: 2
+ - D:\lidarrrrr\anbu\training_labeled\a\DX3011148 ULMIANO000003.laz
+ - D:\lidarrrrr\anbu\training_labeled\a\DX3011148 ULMIANO000004.laz
+
+Device: CUDA
+Classes: [2, 3, 4, 5, 6]
+Folds: 2
+Outputs: d:\lidarrrrr\anbu\cv_outputs
+======================================================================
+
+FOLD 1/2
+Test : DX3011148 ULMIANO000003.laz
+Train: 1 files
+Train 1/10: 100%|███████████████████████████████████████| 200/200 [00:10<00:00, 19.59it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train 2/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 22.72it/s, loss=nan]
+Train 3/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.29it/s, loss=nan]
+Train 4/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 22.46it/s, loss=nan]
+Train 5/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.46it/s, loss=nan]
+Train 6/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 22.32it/s, loss=nan]
+Train 7/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.60it/s, loss=nan]
+Train 8/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 22.06it/s, loss=nan]
+Train 9/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 23.11it/s, loss=nan]
+Train 10/10: 100%|██████████████████████████████████████| 200/200 [00:09<00:00, 21.04it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 85/85 [02:45<00:00,  1.95s/it]
+
+Fold Overall Accuracy: 66.91%
+Per-class Accuracy (Recall):
+  Ground(2)   : 100.00%
+  LowVeg(3)   : 0.00%
+  MedVeg(4)   : 0.00%
+  HighVeg(5)  : 0.00%
+  Building(6) : 0.00%
+
+Precision / Recall / F1:
+              precision    recall  f1-score   support
+
+   Ground(2)     0.6691    1.0000    0.8017   7800609
+   LowVeg(3)     0.0000    0.0000    0.0000    861661
+   MedVeg(4)     0.0000    0.0000    0.0000   2290556
+  HighVeg(5)     0.0000    0.0000    0.0000    695769
+ Building(6)     0.0000    0.0000    0.0000     10560
+
+    accuracy                         0.6691  11659155
+   macro avg     0.1338    0.2000    0.1603  11659155
+weighted avg     0.4476    0.6691    0.5364  11659155
+
+
+FOLD 2/2
+Test : DX3011148 ULMIANO000004.laz
+Train: 1 files
+Train 1/10: 100%|███████████████████████████████████████| 200/200 [00:11<00:00, 17.95it/s, loss=nan]
+D:\anaconda\Lib\site-packages\torch\optim\lr_scheduler.py:182: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+Train 2/10: 100%|███████████████████████████████████████| 200/200 [00:10<00:00, 19.64it/s, loss=nan]
+Train 3/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 20.06it/s, loss=nan]
+Train 4/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 20.17it/s, loss=nan]
+Train 5/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.07it/s, loss=nan]
+Train 6/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 20.83it/s, loss=nan]
+Train 7/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 23.06it/s, loss=nan]
+Train 8/10: 100%|███████████████████████████████████████| 200/200 [00:09<00:00, 21.67it/s, loss=nan]
+Train 9/10: 100%|███████████████████████████████████████| 200/200 [00:08<00:00, 23.01it/s, loss=nan]
+Train 10/10: 100%|██████████████████████████████████████| 200/200 [00:09<00:00, 20.02it/s, loss=nan]
+Predict tiles: 100%|████████████████████████████████████████████████| 16/16 [00:31<00:00,  1.99s/it]
+
+Fold Overall Accuracy: 79.88%
+Per-class Accuracy (Recall):
+  Ground(2)   : 100.00%
+  LowVeg(3)   : 0.00%
+  MedVeg(4)   : 0.00%
+  HighVeg(5)  : 0.00%
+  Building(6) : 0.00%
+
+Precision / Recall / F1:
+              precision    recall  f1-score   support
+
+   Ground(2)     0.7988    1.0000    0.8881   1452893
+   LowVeg(3)     0.0000    0.0000    0.0000    139284
+   MedVeg(4)     0.0000    0.0000    0.0000    165550
+  HighVeg(5)     0.0000    0.0000    0.0000     58862
+ Building(6)     0.0000    0.0000    0.0000      2258
+
+    accuracy                         0.7988   1818847
+   macro avg     0.1598    0.2000    0.1776   1818847
+weighted avg     0.6381    0.7988    0.7095   1818847
+
+
+======================================================================
+✅ OVERALL RESULTS (All folds combined)
+Mean Overall Accuracy: 73.39%  (std 6.49%)
+Overall Per-class Accuracy (Recall):
+  Ground(2)   : 100.00%
+  LowVeg(3)   : 0.00%
+  MedVeg(4)   : 0.00%
+  HighVeg(5)  : 0.00%
+  Building(6) : 0.00%
+Vegetation (3+4+5) Combined Recall: 0.00%
+======================================================================
+
